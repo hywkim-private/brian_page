@@ -9,11 +9,18 @@ class Menu extends Component {
         }
     }
     menuClickHandler = () => {
-        this.setState({
-            showMenu: true
-        });
+        event.preventDefault();
+        this.setState({ showMenu: true }, () => {
+            document.addEventListener('click',this.closeMenu())
+        })
     }
 
+    closeMenu = () => {
+        this.setState({showMenu : false}, ()=> {
+            document.removeEventListener('click', this.closeMenu)
+        })
+    }
+    
     render() {
         return (
             <div>
