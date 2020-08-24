@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import menu_img from './images/menu.jpg'
 
 
 class Menu extends Component {
@@ -8,10 +9,9 @@ class Menu extends Component {
             showMenu: false
         }
     }
-    menuClickHandler = () => {
-        event.preventDefault();
+    menuClickHandler = (event) => {
         this.setState({ showMenu: true }, () => {
-            document.addEventListener('click',this.closeMenu())
+            document.addEventListener('click',this.closeMenu)
         })
     }
 
@@ -24,7 +24,9 @@ class Menu extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.menuClickHandler} />
+                <button onClick={this.menuClickHandler} >
+                    <img src={menu_img} alt='menu'/>
+                </ button>
                 {
                     this.state.showMenu
                      ? 
